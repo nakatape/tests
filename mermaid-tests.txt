@@ -1,0 +1,75 @@
+    #128263;       : after a1       , 20d
+	
+-------------------------------------------------------	
+flowchart LR
+
+    subgraph caixa
+    direction LR
+    cx_b1[base 1] -.- cx_br[break] -.- cx_b2[base 2]
+    end
+    
+    subgraph ps[petit surdo]
+    direction LR
+    ps_b1[base 1] -.- ps_b2[base 2]
+    end
+
+    
+    vent --> caixa & ps
+-------------------------------------------------------	
+
+gantt
+    dateFormat HH:mm
+    axisFormat %M
+    Initial milestone : milestone, m1, 11:59, 1m
+
+    section caixa
+        vent du désert : 4m
+        base 1 : 4m
+        break : 4m
+        base 2 : 4m
+        fin : 4m
+
+-------------------------------------------------------	
+gantt
+    dateFormat MM-DD
+    axisFormat %d
+    tickInterval 1day
+
+    section direction
+        appel: milestone, m1, 01-02, 0d
+        appel: milestone, m1, 01-03, 0d
+        appel: milestone, m1, 01-04, 0d
+    section vent du<br/>désert
+        caixa: 01-01, 1d
+        petit surdo: 01-01, 1d
+        grand surdo: 01-01, 1d
+        tamborim: 01-01, 1d
+        agogo: 01-01, 1d
+        chocalho: 01-01, 1d
+    section base 1
+        caixa:          01-02, 4d
+        petit surdo:    01-03, 3d
+        grand surdo:    01-04, 2d
+        tamborim:       01-05, 1d
+        agogo:          01-05, 1d
+        chocalho:       01-05, 1d
+
+-------------------------------------------------------	
+
+
+flowchart LR
+    vent[vent du désert] -.- b1[base 1]
+
+    subgraph caixa
+        b1 -.- break -.- b2[base 2]
+    end    
+
+    subgraph tamborim
+        b1 -.- b2
+    end    
+
+    subgraph ps [petit surdo]
+        b1 -.- b2 -.- fin
+    end
+
+
